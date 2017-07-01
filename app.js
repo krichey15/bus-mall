@@ -73,7 +73,7 @@ function refreshThree(){
   var thirdImgEl = document.createElement('Img');
   thirdImgEl.setAttribute('src', imageArray[number3].path);
   divEl.appendChild(thirdImgEl);
-  firstImgEl.addEventListener('click', refreshThree);
+  thirdImgEl.addEventListener('click', refreshThree);
 
   previous3 = setOf3;
 }
