@@ -111,4 +111,7 @@ refreshThree();
 
 function results(){
   console.log(imageArray);
+
+  var clear = document.getElementById('products');
+  document.body.removeChild(clear);
 }
