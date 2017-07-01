@@ -37,8 +37,10 @@ function getRandomIndex(min, max) {
 };
 
 var previous3 = [];
+
 var totalClicks = 0;
 
+refreshThree();
 
 function refreshThree(){
 
@@ -107,7 +109,6 @@ function refreshThree(){
     results();
   }
 }
-refreshThree();
 
 function results(){
   console.log(imageArray);
