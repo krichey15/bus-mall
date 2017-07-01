@@ -37,45 +37,78 @@ function getRandomIndex(min, max) {
 };
 
 var previous3 = [];
+var totalClicks = 0;
+
 
 function refreshThree(){
 
-  var setOf3 = [];
-  while (setOf3.length < 3){
-    var randomIndex = getRandomIndex(0, 19);
-    if (setOf3.indexOf(randomIndex) === -1 && previous3.indexOf(setOf3)){
-      setOf3.push(randomIndex);
+  if(totalClicks < 25){
+    var setOf3 = [];
+    while (setOf3.length < 3){
+      var randomIndex = getRandomIndex(0, 19);
+      if (setOf3.indexOf(randomIndex) === -1 && previous3.indexOf(setOf3)){
+        setOf3.push(randomIndex);
+      }
+      console.log(setOf3);
     }
-    console.log(setOf3);
+
+    var number1 = setOf3[0];
+    // console.log(number1);
+    var number2 = setOf3[1];
+    // console.log(number2);
+    var number3 = setOf3[2];
+    // console.log(number3);
+
+    imageArray[number1].shown++;
+    imageArray[number2].shown++;
+    imageArray[number3].shown++;
+
+    var divEl = document.getElementById('products');
+    document.body.appendChild(divEl);
+    divEl.textContent = '';
+
+    var firstImgEl = document.createElement('Img');
+    firstImgEl.setAttribute('src', imageArray[number1].path);
+    firstImgEl.setAttribute('id', 'image1');
+    divEl.appendChild(firstImgEl);
+    firstImgEl.addEventListener('click', clickCounter);
+    firstImgEl.addEventListener('click', refreshThree);
+
+
+    var secondImgEl = document.createElement('Img');
+    secondImgEl.setAttribute('src', imageArray[number2].path);
+    secondImgEl.setAttribute('id', 'image2');
+    divEl.appendChild(secondImgEl);
+    secondImgEl.addEventListener('click', clickCounter);
+    secondImgEl.addEventListener('click', refreshThree);
+
+    var thirdImgEl = document.createElement('Img');
+    thirdImgEl.setAttribute('src', imageArray[number3].path);
+    thirdImgEl.setAttribute('id', 'image3');
+    divEl.appendChild(thirdImgEl);
+    thirdImgEl.addEventListener('click', clickCounter);
+    thirdImgEl.addEventListener('click', refreshThree);
+
+    console.log(event.target.id);
+
+    function clickCounter(){
+      totalClicks++;
+      if (event.target.id === 'image1'){
+        imageArray[number1].clicked++;
+      }else if (event.target.id === 'image2') {
+        imageArray[number2].clicked++;
+      }else if (event.target.id === 'image3') {
+        imageArray[number3].clicked++;
+      }
+    }
+
+    previous3 = setOf3;
+  } else {
+    results();
   }
-
-  var number1 = setOf3[0];
-  // console.log(number1);
-  var number2 = setOf3[1];
-  // console.log(number2);
-  var number3 = setOf3[2];
-  // console.log(number3);
-
-  var divEl = document.getElementById('products');
-  document.body.appendChild(divEl);
-  divEl.textContent = '';
-
-  var firstImgEl = document.createElement('Img');
-  firstImgEl.setAttribute('src', imageArray[number1].path);
-  divEl.appendChild(firstImgEl);
-  firstImgEl.addEventListener('click', refreshThree);
-
-  var secondImgEl = document.createElement('Img');
-  secondImgEl.setAttribute('src', imageArray[number2].path);
-  divEl.appendChild(secondImgEl);
-  secondImgEl.addEventListener('click', refreshThree);
-
-  var thirdImgEl = document.createElement('Img');
-  thirdImgEl.setAttribute('src', imageArray[number3].path);
-  divEl.appendChild(thirdImgEl);
-  thirdImgEl.addEventListener('click', refreshThree);
-
-  previous3 = setOf3;
 }
-
 refreshThree();
+
+function results(){
+  console.log(imageArray);
+}
