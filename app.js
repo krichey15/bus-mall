@@ -115,4 +115,6 @@ function results(){
 
   var clear = document.getElementById('products');
   document.body.removeChild(clear);
+
+  var context = 
 }
