@@ -116,5 +116,30 @@ function results(){
   var clear = document.getElementById('products');
   document.body.removeChild(clear);
 
-  var context = 
+  var context = document.getElementById('results-graph').getContext('2d');
+
+  var clicks = [1,2];
+  var itemNames = ['new', 'old'];
+  var chartColors = ['black', 'blue'];
+
+  var myChart = new Chart(context, {
+    type: 'bar',
+    data: {
+      labels: itemNames,
+      datasets: [{
+        label: '# of Votes',
+        data: clicks,
+        backgroundColor: chartColors
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
 }
