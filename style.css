@@ -6,3 +6,8 @@ img {
   height: 200px;
   width: 200px;
 }
+
+#graphBox {
+  height: 33%;
+  width: 100%;
+}

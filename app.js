@@ -48,7 +48,7 @@ function refreshThree(){
     var setOf3 = [];
     while (setOf3.length < 3){
       var randomIndex = getRandomIndex(0, 19);
-      if (setOf3.indexOf(randomIndex) === -1 && previous3.indexOf(setOf3)){
+      if (setOf3.indexOf(randomIndex) === -1 && setOf3.indexOf(previous3) ){
         setOf3.push(randomIndex);
       }
       console.log(setOf3);
