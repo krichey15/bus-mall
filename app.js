@@ -118,9 +118,19 @@ function results(){
 
   var context = document.getElementById('results-graph').getContext('2d');
 
-  var clicks = [1,2];
-  var itemNames = ['new', 'old'];
-  var chartColors = ['black', 'blue'];
+  var clicks = [];
+  for (var i = 0; i < imageArray.length ; i++){
+    clicks.push(imageArray[i].clicked);
+  }
+  console.log(clicks);
+
+  var itemNames = [];
+  for (var j = 0; j < imageArray.length ; j++){
+    itemNames.push(imageArray[j].name);
+  }
+  console.log(itemNames);
+
+  var chartColors = ['black', 'blue', 'green', 'red', 'orange', 'yellow', 'grey', 'purple', 'pink', 'brown', 'white', '#d3ffce', '#ff7373', '#daa520', '#ccff00', '#8a2be2', '#404040', '#b6fcd5', '#ff7f50', '#f5f5dc'];
 
   var myChart = new Chart(context, {
     type: 'bar',
