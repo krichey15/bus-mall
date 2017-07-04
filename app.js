@@ -118,11 +118,21 @@ function results(){
 
   var context = document.getElementById('results-graph').getContext('2d');
 
-  var clicks = [];
+  var clicks;
+  if (localStorage.clicks) {
+    var stringifiedClick = localStorage.clicks;
+    console.log(stringifiedClick);
+
+    clicks = JSON.parse(stringifiedClick);
+  } else {
+    clicks = [];
+  }
+
   for (var i = 0; i < imageArray.length ; i++){
     clicks.push(imageArray[i].clicked);
   }
   console.log(clicks);
+
 
   var itemNames = [];
   for (var j = 0; j < imageArray.length ; j++){
@@ -152,4 +162,10 @@ function results(){
       }
     }
   });
+  saveStatsToLocalStorage(clicks);
+
+  function saveStatsToLocalStorage(stats){
+    var statsString = JSON.stringify(stats);
+    localStorage.clicked = statsString;
+  }
 }
